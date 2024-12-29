@@ -1,6 +1,8 @@
 
-ejercicio1();
-ejercicio2();
+// ejercicio1();
+// ejercicio2();
+ejercicio3();
+
 
 // Ejercicio 1: Crear y consumir una promesa simple
 function ejercicio1() {
@@ -37,6 +39,11 @@ function ejercicio2() {
     operationEx2();
 }
 
+// Ejercicio 3: Simular una API
+function ejercicio3() {
+    loginAttempt();
+}
+
 // Crea una promesa que simule una operación que tarda 2 segundos en completarse.
 //  Si el número generado aleatoriamente (0-10) es mayor o igual a 5, resuelve con “Éxito”.
 //  Si no, rechaza con “Error”.
@@ -69,3 +76,39 @@ async function operationEx2() {
 function delay(num) {
     return new Promise( resolve => setTimeout (resolve, num * 1000));
 }
+
+
+
+// Crea una función simularAPI
+// que reciba un ID de usuario
+// y devuelva sus datos después de 1 segundo.
+// Si el ID no es un número, lanza un error.
+
+async function apiSimulator(userID) {
+
+    return new Promise (async (resolve, reject) => {
+        await delay(1);
+    
+        if (isNaN(userID)) {
+            reject(`error, invalid data`);
+
+        } else {
+            resolve(`login successful`);
+        }
+    }
+)}
+
+
+async function loginAttempt() {
+
+    let rightID = 3;
+    let wrongID = "a";
+    try {
+        let result = await apiSimulator("rightID");
+        console.log(result);
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
