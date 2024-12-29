@@ -6,7 +6,7 @@
 
 
 
-
+// manera A):
 async function newPromise() {
 
     return new Promise (async (resolve, reject) => {
@@ -23,26 +23,6 @@ async function newPromise() {
 }
 
 
-// async function newPromise2() {
-//     return new Promise(async (resolve, reject) => {
-//         let randomNum = Math.random() * 10; // Genera un número aleatorio entre 0 y 10
-//         console.log(`Número generado: ${randomNum.toFixed(2)}`);
-        
-//         await delay(2); // Espera 2 segundos
-        
-//         if (randomNum >= 5) {
-//             resolve("Éxito");
-//         } else {
-//             reject("Error");
-//         }
-//     });
-// }
-
-
-// newPromise.then((successMessage) => console.log(successMessage));
-// newPromise.catch((errorMessage) => console.log(errorMessage));
-
-
 async function operation() {
     try {
         let result = await newPromise();
@@ -52,7 +32,41 @@ async function operation() {
     }
 }
 
-operation();
+
+// operation();
+
+// manera B) :
+const newPromiseArrow = new Promise (async (resolve, reject) => {
+
+    let randomNum = Math.random() * 10;
+    await delay (randomNum);
+    
+    if (randomNum <= 2) {
+        resolve(`successful bitx`)
+    } else {
+        reject(`you are a failure`)
+    }
+
+})
+
+// 1)
+// esto tambien podria ser asi, al final es lo mismo:
+// newPromiseArrow.then((successMessage) => console.log(successMessage)).catch((errorMessage) => console.log(errorMessage));
+
+
+newPromiseArrow
+    .then((successMessage) => console.log(successMessage))
+    .catch((errorMessage) => console.log(errorMessage));
+
+
+// ERROR)
+// el then y catch tiene que ser sobre un mismo objeto (gestionar el success y el error desde un mismo sitio)
+newPromiseArrow.then((successMessage) => console.log(successMessage))
+// newPromiseArrow.catch((errorMessage) => console.log(errorMessage));
+
+
+
+
 
 function delay(num) {
     return new Promise( resolve => setTimeout (resolve, num * 1000));
