@@ -97,10 +97,10 @@ async function apiSimulator(userID) {
 
 async function loginAttempt() {
 
-    let rightID = 3;
-    let wrongID = "a";
+    const userID = process.argv[2];
+    console.log(userID);
     try {
-        let result = await apiSimulator("rightID");
+        let result = await apiSimulator(userID);
         console.log(result);
 
     } catch (error) {
