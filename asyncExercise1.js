@@ -77,13 +77,10 @@ function delay(num) {
     return new Promise( resolve => setTimeout (resolve, num * 1000));
 }
 
-
-
 // Crea una función simularAPI
 // que reciba un ID de usuario
 // y devuelva sus datos después de 1 segundo.
 // Si el ID no es un número, lanza un error.
-
 async function apiSimulator(userID) {
 
     return new Promise (async (resolve, reject) => {
@@ -97,7 +94,6 @@ async function apiSimulator(userID) {
         }
     }
 )}
-
 
 async function loginAttempt() {
 
